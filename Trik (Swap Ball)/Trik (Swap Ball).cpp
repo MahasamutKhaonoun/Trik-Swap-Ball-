@@ -4,30 +4,38 @@ int checkpositon(int, char);
 
 int main()
 {
-	char c[1000];
-	char* n = c;
-	int all;
-	int result = 1;
+	struct CharACB
+	{
+		char c[1000];
+		char* n = c;
+	}CB;
+	struct Amount
+	{
+		int all;
+		int a;
+		int result = 1;
+	}num;
+	
 	for (int i = 0; i < 1000; i++)
 	{
-		scanf_s("%c", &c[i]);
-		int a = c[i];
-		if (a == 10) // New line
+		scanf_s("%c", &CB.c[i]);
+		num.a = CB.c[i];
+		if (num.a == 10) // New line
 		{
-			all = i;
+			num.all = i;
 			i = 1001; // Exit
 		}
-		else if (c[i] != 'A' && c[i] != 'B' && c[i] != 'C')
+		else if (CB.c[i] != 'A' && CB.c[i] != 'B' && CB.c[i] != 'C')
 		{
 			printf("Error");
 			return 1;
 		}
 	}
-	for (int i = 0; i < all; i++)
+	for (int i = 0; i < num.all; i++)
 	{
-		result = checkpositon(result, c[i]);
+		num.result = checkpositon(num.result, CB.c[i]);
 	}
-	printf("%d", result);
+	printf("%d", num.result);
 	return 0;
 }
 
